@@ -1,0 +1,43 @@
+import com.mycompany.terceraentrega.Equipo;
+import com.mycompany.terceraentrega.Fase;
+import com.mycompany.terceraentrega.Partido;
+import com.mycompany.terceraentrega.Pronostico;
+import com.mycompany.terceraentrega.ResultadoEnum;
+import com.mycompany.terceraentrega.Ronda;
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+
+/**
+ *
+ * @author perei_qior
+ */
+public class Test {
+    
+   
+    public void CalcularCorrectamentePuntajeDePronostico(){
+        
+        String participante = "Pedro";
+        Equipo equipo1 = new Equipo("Argentina");
+        Equipo equipo2 = new Equipo("Arabia Saudita");
+        Partido partido = new Partido(3, 0, equipo1, equipo2);
+        ArrayList<Partido> Partidos = new ArrayList<>();
+        Partidos.add(partido);
+        ArrayList<Ronda> Rondas = new ArrayList<>();
+        Ronda ronda = new Ronda("1", Partidos);
+        Fase fase = new Fase("1",Rondas );
+        Equipo equipo = new Equipo("Argentina");
+        ResultadoEnum resultado = ResultadoEnum.GANADOR;
+
+         
+        Pronostico pronostico = new Pronostico(participante,"1", "1", partido, equipo, resultado );
+                
+        assertEquals(true, pronostico.acertado());
+
+        
+    }
+    
+}
